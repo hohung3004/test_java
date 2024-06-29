@@ -19,10 +19,6 @@ public enum ErrorCode {
     INPUT_INVALID ("Input invalid"),
     PARSE_DATETIME_FAILED("Parse to datetime failed"),
     IMPORT_FAILED ("Import failed"),
-    EXPORT_FAILED ("Export failed"),
-    CITIZEN_IDENTITY_EXISTS ("CCCD đã tồn tại trên hệ thống"),
-    PHONE_NUMBER_EXISTS("SĐT đã tồn tại trên hệ thống"),
-    EMAIL_EXISTS("Email đã tồn tại trên hệ thống")
     ;
     private final String msg;
 
