@@ -76,7 +76,7 @@ public class UserService {
             Optional<UserEntity> userEntity = userRepository.findById(id);
             if (userEntity.isPresent()) {
                 AdminResponse adminResponse = modelMapper.map(userEntity, AdminResponse.class);
-
+                adminResponse.setUserName(userEntity.get().getUsername());
                 return adminResponse;
             } else {
                 log.info("Id nhan vien khong ton tai : {}", id);
@@ -142,6 +142,7 @@ public class UserService {
                         .orElseThrow(() -> new ManagerException(ErrorCode.RECORD_NOT_FOUND));
 
                 modelMapper.map(request, userEntity.get());
+                userEntity.get().setUserName(request.getUserName());
                 userEntity.get().setRole(role);
                 userEntity.get().setValid(true);
                 userEntity.get().setPassword(userEntity.get().getPassword());
