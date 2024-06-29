@@ -1,4 +1,4 @@
-package com.project.salebe.util;
+package com.project.javatestfresher.util;
 
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;

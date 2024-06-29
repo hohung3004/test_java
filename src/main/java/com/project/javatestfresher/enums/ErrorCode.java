@@ -1,4 +1,4 @@
-package com.project.salebe.enums;
+package com.project.javatestfresher.enums;
 
 public enum ErrorCode {
     SUCCESS ("Success"),

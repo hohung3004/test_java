@@ -1,9 +1,10 @@
-package components;
+package com.project.javatestfresher.components;
 
-import com.project.salebe.entity.Token;
-import com.project.salebe.entity.UserEntity;
-import com.project.salebe.exceptions.InvalidParamException;
-import com.project.salebe.repository.TokenRepository;
+
+import com.project.javatestfresher.entity.Token;
+import com.project.javatestfresher.entity.UserEntity;
+import com.project.javatestfresher.exceptions.InvalidParamException;
+import com.project.javatestfresher.repository.TokenRepository;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.io.Encoders;
@@ -27,8 +28,8 @@ public class JwtTokenUtils {
     @Value("${jwt.expiration}")
     private int expiration; //save to an environment variable
 
-    @Value("${jwt.expiration-refresh-token}")
-    private int expirationRefreshToken;
+//    @Value("${jwt.expiration-refresh-token}")
+//    private int expirationRefreshToken;
 
     @Value("${jwt.secretKey}")
     private String secretKey;
@@ -60,11 +61,7 @@ public class JwtTokenUtils {
 
     private static String getSubject(UserEntity user) {
         // Determine subject identifier (phone number or email)
-        String subject = user.getPhoneNumber();
-        if (subject == null || subject.isBlank()) {
-            // If phone number is null or blank, use email as subject
-            subject = user.getEmail();
-        }
+        String subject = user.getUsername();
         return subject;
     }
 
@@ -112,7 +109,7 @@ public class JwtTokenUtils {
             Token existingToken = tokenRepository.findByToken(token);
             if (existingToken == null ||
                     existingToken.isRevoked() == true ||
-                    !userDetails.isActive()
+                    !userDetails.isValid()
             ) {
                 return false;
             }

@@ -1,7 +1,7 @@
-package com.project.salebe.config;
+package com.project.javatestfresher.config;
 
-import com.project.salebe.entity.UserEntity;
-import com.project.salebe.repository.UserRepository;
+import com.project.javatestfresher.entity.UserEntity;
+import com.project.javatestfresher.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,15 +26,9 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         return subject -> {
             // Attempt to find user by phone number
-            Optional<UserEntity> userByPhoneNumber = userRepository.findByPhoneNumber(subject);
+            Optional<UserEntity> userByPhoneNumber = userRepository.findByUserName(subject);
             if (userByPhoneNumber.isPresent()) {
                 return userByPhoneNumber.get(); // Return UserDetails if found
-            }
-
-            // If user not found by phone number, attempt to find by email
-            Optional<UserEntity> userByEmail = userRepository.findByEmail(subject);
-            if (userByEmail.isPresent()) {
-                return userByEmail.get(); // Return UserDetails if found
             }
 
             // If user not found by either phone number or email, throw UsernameNotFoundException

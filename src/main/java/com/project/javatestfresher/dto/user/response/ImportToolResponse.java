@@ -9,5 +9,5 @@ import java.util.List;
 public class ImportToolResponse {
     private String message;
     @JsonProperty("list_error")
-    private List<ToolError> listError;
+    private List<UserError> listError;
 }

@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class SearchUseresponse {
+public class SearchUserResponse {
     @JsonProperty("record_size")
     private Long recordSize;
     private List<AdminResponse> list;

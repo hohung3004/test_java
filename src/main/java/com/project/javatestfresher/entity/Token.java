@@ -1,9 +1,10 @@
-package com.project.salebe.entity;
+package com.project.javatestfresher.entity;
 
-import jakarta.persistence.*;
+
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,7 +17,7 @@ import java.time.LocalDateTime;
 public class Token {
     @Id
     @GeneratedValue(generator = "mygen")
-    @GenericGenerator(name = "mygen", strategy = "com.project.salebe.util.IdGenerator")
+    @GenericGenerator(name = "mygen", strategy = "com.project.javatestfresher.util.IdGenerator")
     private String id;
 
     @Column(name = "token", length = 255)

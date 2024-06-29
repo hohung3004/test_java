@@ -1,18 +1,18 @@
-package com.project.salebe.exceptions;
+package com.project.javatestfresher.exceptions;
 
-import com.project.salebe.enums.ErrorCode;
+import com.project.javatestfresher.enums.ErrorCode;
 import org.springframework.http.HttpStatus;
 
-public class SaleappException extends RuntimeException {
+public class ManagerException extends RuntimeException {
     private ErrorCode errorCode;
     private HttpStatus httpStatus;
 
-    public SaleappException(ErrorCode errorCode, String... args) {
+    public ManagerException(ErrorCode errorCode, String... args) {
         super(errorCode.format(args));
         this.errorCode = errorCode;
     }
 
-    public SaleappException(HttpStatus httpStatus, ErrorCode errorCode, String... args) {
+    public ManagerException(HttpStatus httpStatus, ErrorCode errorCode, String... args) {
         super(errorCode.format(args));
         this.errorCode = errorCode;
         this.httpStatus = httpStatus;

@@ -1,28 +1,21 @@
-package com.project.salebe.dto.auth.request;
+package com.project.javatestfresher.dto.auth.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.validation.constraints.NotBlank;
 
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 public class LoginRequest {
-    @JsonProperty("phone_number")
-    private String phoneNumber;
-
-    @JsonProperty("email")
-    private String email;
+    @JsonProperty("user_name")
+    private String userName;
 
     @NotBlank(message = "Password cannot be blank")
     private String password;
-
-    @Min(value = 1, message = "You must enter role's Id")
-    @JsonProperty("role_id")
-    private String roleId;
 }

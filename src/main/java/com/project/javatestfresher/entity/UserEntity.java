@@ -1,6 +1,5 @@
-package com.project.salebe.entity;
+package com.project.javatestfresher.entity;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,9 +9,10 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,55 +26,27 @@ public class UserEntity implements UserDetails {
 
     @Id
     @GeneratedValue(generator = "mygen")
-    @GenericGenerator(name = "mygen", strategy = "com.project.salebe.util.IdGenerator")
+    @GenericGenerator(name = "mygen", strategy = "com.project.javatestfresher.util.IdGenerator")
     @Column(name = "id")
     private String id;
-    @Column(name = "fullname", length = 100)
-    private String fullName;
+    @Column(name = "user_name", length = 100)
+    private String userName;
 
-    @Column(name = "phone_number", length = 10, nullable = true)
-    private String phoneNumber;
+    @Column(name = "created_at")
+    LocalDateTime createdAt = LocalDateTime.now();
 
-    // ALTER TABLE users ADD COLUMN email VARCHAR(255) DEFAULT '';
-    @Column(name = "email", length = 255, nullable = true)
-    private String email;
-
-    @Column(name = "address", length = 200)
-    private String address;
-
-    //ALTER TABLE users ADD COLUMN profile_image VARCHAR(255) DEFAULT '';
-    @Column(name = "profile_image")
-    private String profileImage;
+    @Column(name = "valid_until")
+    LocalDateTime validUntil;
 
     @Column(name = "password", length = 200, nullable = false)
     private String password;
-    private String code;
-    @Column(name = "is_active")
-    private boolean active;
 
-    @Column(name = "date_of_birth")
-    private Date dateOfBirth;
-
-    @Column(name = "facebook_account_id")
-    private int facebookAccountId;
-
-    @Column(name = "google_account_id")
-    private int googleAccountId;
-
-    @Column(name = "position_id")
-    private String positionId;
-
-    @Column(name = "schedule_id")
-    private String scheduleId;
-
-    @Column(name = "department_id")
-    private String departmentId;
-
-    @Column(name = "is_main")
-    private String isMain;
+    @Column(name = "is_valid")
+    private boolean isValid;
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity role;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -87,10 +59,8 @@ public class UserEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        if (phoneNumber != null && !phoneNumber.isEmpty()) {
-            return phoneNumber;
-        } else if (email != null && !email.isEmpty()) {
-            return email;
+        if (userName != null && !userName.isEmpty()) {
+            return userName;
         }
         return "";
     }
@@ -116,17 +86,4 @@ public class UserEntity implements UserDetails {
         return true;
     }
 
-//    //Login facebook
-//    @Override
-//    public Map<String, Object> getAttributes() {
-//        return new HashMap<String, Object>();
-//    }
-//    @Override
-//    public String getName() {
-//        return getAttribute("name");
-//    }
-//    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-//
-//    @JsonManagedReference
-//    private List<Comment> comments = new ArrayList<>();
 }

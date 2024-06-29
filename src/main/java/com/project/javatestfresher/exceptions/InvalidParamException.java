@@ -1,7 +1,9 @@
-package com.project.salebe.exceptions;
+package com.project.javatestfresher.exceptions;
 
-public class InvalidParamException extends Exception{
+import com.project.javatestfresher.enums.ErrorCode;
+
+public class InvalidParamException extends ManagerException {
     public InvalidParamException(String message) {
-        super(message);
+        super(ErrorCode.valueOf(message));
     }
 }

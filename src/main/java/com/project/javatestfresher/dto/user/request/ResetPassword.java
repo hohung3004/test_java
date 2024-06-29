@@ -1,4 +1,4 @@
-package com.project.salebe.dto.admin.request;
+package com.project.javatestfresher.dto.user.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

@@ -1,15 +1,15 @@
-package com.project.salebe.service;
+package com.project.javatestfresher.service;
 
-import com.project.salebe.components.JwtTokenUtils;
-import com.project.salebe.entity.Token;
-import com.project.salebe.entity.UserEntity;
-import com.project.salebe.repository.TokenRepository;
-import jakarta.transaction.Transactional;
+import com.project.javatestfresher.components.JwtTokenUtils;
+import com.project.javatestfresher.entity.Token;
+import com.project.javatestfresher.entity.UserEntity;
+import com.project.javatestfresher.repository.TokenRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -21,8 +21,6 @@ public class TokenService {
     @Value("${jwt.expiration}")
     private int expiration; //save to an environment variable
 
-    @Value("${jwt.expiration-refresh-token}")
-    private int expirationRefreshToken;
     @Autowired
     private TokenRepository tokenRepository;
     @Autowired
@@ -53,7 +51,6 @@ public class TokenService {
                 .build();
 
         newToken.setRefreshToken(UUID.randomUUID().toString());
-        newToken.setRefreshExpirationDate(LocalDateTime.now().plusSeconds(expirationRefreshToken));
         tokenRepository.save(newToken);
         return newToken;
     }

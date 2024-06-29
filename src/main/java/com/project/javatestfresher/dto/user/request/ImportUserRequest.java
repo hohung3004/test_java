@@ -5,6 +5,6 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ImportToolRequest {
+public class ImportUserRequest {
     List<AdminRequest> listTool;
 }

@@ -1,4 +1,4 @@
-package com.project.salebe.dto.auth.respose;
+package com.project.javatestfresher.dto.auth.respose;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -17,8 +17,6 @@ public class LoginResponse {
     @JsonProperty("token")
     private String token;
 
-    @JsonProperty("refresh_token")
-    private String refreshToken;
     private String tokenType = "Bearer";
 
     private String username;
