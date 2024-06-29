@@ -184,7 +184,7 @@ public class UserService {
         List<UserError> listToolErrors = new ArrayList<>();
         int countError = 0;
         int countSuccess = 0;
-        for (AdminRequest userRequest : request.getListTool()) {
+        for (AdminRequest userRequest : request.getList()) {
             UserError toolError = modelMapper.map(userRequest, UserError.class);
             try {
                 if (userRepository.findByUserName(userRequest.getUserName()).isPresent()) {
