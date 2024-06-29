@@ -45,7 +45,7 @@ public class UserController {
         return userService.getAdminById(id);
     }
 
-        @PreAuthorize("hasRole('ROLE_ADMIN')")
+        @PreAuthorize("hasRole('ROLE_MANAGER')")
     @PostMapping(value = "/register")
     public AdminResponse createAdmin(@Valid @RequestBody AdminRequest request) {
         log.info("Admin create user : {}", request.getUserName());
