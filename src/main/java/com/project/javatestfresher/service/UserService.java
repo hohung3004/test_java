@@ -96,7 +96,7 @@ public class UserService {
 
                 if (!userRequest.getUserName().isBlank() && userPhoneEntity.isPresent()) {
                     log.error("username da ton tai: {}", userRequest.getRetypePassword());
-                    throw new ManagerException(ErrorCode.PHONE_NUMBER_EXISTS);
+                    throw new ManagerException(ErrorCode.RECORD_NOT_FOUND);
                 }
 
                 RoleEntity role = roleRepository.findById(userRequest.getRoleId())
@@ -134,7 +134,7 @@ public class UserService {
             } else {
                 if (userPhoneEntity.isPresent() && !userPhoneEntity.get().getId().equals(userEntity.get().getId())) {
                     log.error("SĐT đã tồn tại: {}", request.getUserName());
-                    throw new ManagerException(ErrorCode.PHONE_NUMBER_EXISTS);
+                    throw new ManagerException(ErrorCode.RECORD_NOT_FOUND);
                 }
 
 
