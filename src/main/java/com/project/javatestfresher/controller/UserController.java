@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_DEVELOPER')")
     public AdminResponse getById(@PathVariable String id) {
         log.info("Xem chi tiet admin viu id : {}", id);
         return userService.getAdminById(id);
@@ -60,7 +60,7 @@ public class UserController {
     }
 
     @PutMapping("/reset-password/{id}")
-    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_USER')")
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_DEVELOPER')")
     public ResponseEntity<ResponseObject> resetPassword(@PathVariable String id, @RequestBody ResetPassword resetPassword) {
         log.info("Thay doi mat khau : {}", id);
         userService.resetPassword(id, resetPassword);

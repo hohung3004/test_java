@@ -6,5 +6,5 @@ import java.util.List;
 
 @Data
 public class ImportUserRequest {
-    List<AdminRequest> listTool;
+    List<AdminRequest> list;
 }
